@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Dashboard - Angular JS, PouchDB, CouchDB</title>
+    <link rel="stylesheet" href="style/base.css">
+    <!--[if IE]>
+      <script src="style/ie.js"></script>
+    <![endif]-->
+    <link href='css/fullcalendar.css' rel='stylesheet' />
+<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link rel="stylesheet" type="text/css" href="css/calculator.css">
+<script src='js/moment.min.js'></script>
+<script src='js/jquery.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+<script src='js/calendar.js'></script>
+<style>
+	#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+</style>
+  </head>
+  <body>
+
+  	<!-- To do list widget, using PouchDB and syncing online with CouchDB-->
+    <section id="todoapp">
+      <header id="header">
+	<h1>Dashboard<p style='font-size: 16px;'>by Abdul Moeed</p></h1>
+	<input id="new-todo" placeholder="To do list, using PouchDB & CouchDB" autofocus>
+      </header>
+      <section id="main">
+	<ul id="todo-list"></ul>
+      </section>
+      <footer id="footer">
+	<span id="todo-count"></span>
+        <div id="sync-wrapper">
+          <div id="sync-success">Currently syncing</div>
+          <div id="sync-error">There was a problem syncing</div>
+        </div>
+      </footer>
+    </section>
+    <footer id="info">
+      <p>Double-click to edit a todo</p>
+    </footer><br><br><br>
+
+    <!-- Calendar widget -->
+    <h2 style='text-align:center;'>CALENDAR</h2><br>
+	<div id='calendar'></div><br><br><br>
+
+	<!-- Calculator widget -->
+	<h2 style='text-align:center;'>CALCULATOR</h2><br>
+	<!-- Tell the app to use the Ctrl scope defined in our app.js -->
+	<div ng-app ng-controller="Ctrl">
+    <div class="calcbody" style="margin-left: 28%; background-color: grey;">
+        <!-- Calculator Display -->
+        <div class="thinborder">
+            <!-- Display is bound to scope variables in app.js -->
+            <p class="output" name="output">{{output}}
+                <br>{{operationToken}}</p>
+        </div>
+        <div class="calcbuttons" style="color: white;">
+            <!-- Buttons all have ng-click directives that call functions in app.js
+            -->
+            <button name="btn1" class="numberbutton" value="1" ng-click='updateOutput(1)'>1</button>
+            <button name="btn2" class="numberbutton" value="2" ng-click='updateOutput(2)'>2</button>
+            <button name="btn3" class="numberbutton" value="3" ng-click='updateOutput(3)'>3</button>
+            <button name="btnMinus" class="operationbutton" ng-click='subtract()'>-</button>
+            <br>
+            <button name="btn4" class="numberbutton" value="4" ng-click='updateOutput(4)'>4</button>
+            <button name="btn5" class="numberbutton" value="5" ng-click='updateOutput(5)'>5</button>
+            <button name="btn6" class="numberbutton" value="6" ng-click='updateOutput(6)'>6</button>
+            <button name="btnPlus" class="operationbutton" ng-click='add()'>+</button>
+            <br>
+            <button name="btn7" class="numberbutton" value="7" ng-click='updateOutput(7)'>7</button>
+            <button name="btn8" class="numberbutton" value="8" ng-click='updateOutput(8)'>8</button>
+            <button name="btn9" class="numberbutton" value="9" ng-click='updateOutput(9)'>9</button>
+            <button name="btnEquals" class="operationbutton" ng-click='calculate()'>=</button>
+            <br>
+            <button name="btn0" class="numberbutton" value="0" ng-click='updateOutput(0)'>0</button>
+            <button name="btnClear" class="clearbutton" ng-click='clear()'>CLEAR</button>
+        </div>
+    </div>
+</div><br><br><br>
+	<script type='text/javascript' src='js/calculator.js'></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+    <script src="//cdn.jsdelivr.net/pouchdb/3.5.0/pouchdb.min.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
